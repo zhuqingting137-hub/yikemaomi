@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1a1420">
+  <title>一刻猫咪</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="stage">
+    <!-- 猫咪视频/占位 -->
+    <div id="catWrap">
+      <video id="catVideo" playsinline muted autoplay loop></video>
+      <div id="catPlaceholder"></div>
+      <div id="touchHint">点我摸摸我</div>
+      <a id="demoLink" href="猫1互动演示.html">🎮 猫1互动演示版</a>
+    </div>
+
+    <!-- 触屏特效层 -->
+    <div id="fxLayer"></div>
+
+    <!-- 顶部信息 -->
+    <div id="topBar">
+      <div id="timer">15:00</div>
+      <div id="muteBtn">🔊</div>
+    </div>
+
+    <!-- 猫咪切换指示点 -->
+    <div id="catDots"></div>
+  </div>
+
+  <!-- 25 分钟结束遮罩 -->
+  <div id="endOverlay" class="hidden">
+    <div class="panel">
+      <div class="emoji">😿</div>
+      <h1>一刻结束啦</h1>
+      <p>15 分钟互动时间结束</p>
+      <button id="renewBtn">续时功能即将上线</button>
+      <button id="restartBtn" class="ghost">再玩一次</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

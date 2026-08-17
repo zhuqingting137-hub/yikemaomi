@@ -1,0 +1,76 @@
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: radial-gradient(circle at 50% 30%, #2b2136 0%, #1a1420 70%);
+  color: #fff;
+  touch-action: manipulation;
+  user-select: none;
+}
+#stage { position: relative; width: 100%; height: 100dvh; overflow: hidden; }
+
+#catWrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+#catVideo { width: 100%; height: 100%; object-fit: cover; transition: opacity .35s; }
+#catVideo.switching { opacity: 0; }
+#catPlaceholder {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  background-size: cover; background-position: center 30%;
+  display: none;
+  animation: kenburns 14s ease-in-out infinite alternate;
+}
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.07); } }
+#touchHint {
+  position: absolute; bottom: 9%; left: 50%; transform: translateX(-50%);
+  padding: 8px 18px; border-radius: 20px; background: rgba(0,0,0,.45);
+  font-size: 14px; animation: hintPulse 2s ease-in-out infinite;
+}
+#demoLink {
+  position: absolute; right: 12px; bottom: calc(52px + env(safe-area-inset-bottom));
+  z-index: 6; color: #ffd28a; text-decoration: none; font-size: 12px;
+  background: rgba(0,0,0,.45); padding: 8px 12px; border-radius: 16px;
+}
+@keyframes hintPulse { 0%,100% { opacity: .9; } 50% { opacity: .45; } }
+
+#fxLayer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.burst {
+  position: absolute; font-size: 34px; animation: burstAnim .7s ease-out forwards;
+  text-shadow: 0 0 12px rgba(255,200,120,.9);
+}
+@keyframes burstAnim {
+  0% { transform: translate(-50%,-50%) scale(.4); opacity: 1; }
+  100% { transform: translate(-50%,-130%) scale(1.4); opacity: 0; }
+}
+
+#topBar {
+  position: absolute; top: calc(10px + env(safe-area-inset-top)); left: 0; right: 0;
+  display: flex; justify-content: space-between; padding: 0 14px; pointer-events: none;
+}
+#catDots {
+  position: absolute; bottom: calc(14px + env(safe-area-inset-bottom)); left: 0; right: 0;
+  display: flex; justify-content: center; gap: 10px; z-index: 5; pointer-events: auto;
+}
+#catDots .dot {
+  width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.35);
+  transition: background .2s, transform .2s;
+}
+#catDots .dot.active { background: #ffd28a; transform: scale(1.35); }
+#timer {
+  background: rgba(0,0,0,.4); padding: 6px 14px; border-radius: 16px; font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+#muteBtn { pointer-events: auto; background: rgba(0,0,0,.4); border: 0; color: #fff; font-size: 18px;
+  width: 34px; height: 34px; border-radius: 50%; cursor: pointer; }
+
+#endOverlay { position: absolute; inset: 0; background: rgba(0,0,0,.78);
+  display: flex; align-items: center; justify-content: center; z-index: 20; }
+#endOverlay.hidden { display: none; }
+.panel { text-align: center; padding: 0 30px; }
+.panel .emoji { font-size: 90px; margin-bottom: 14px; }
+.panel h1 { font-size: 26px; margin-bottom: 8px; }
+.panel p { color: #c9b8d8; margin-bottom: 26px; font-size: 15px; }
+.panel button {
+  display: block; width: 230px; margin: 0 auto 12px; padding: 13px 0; border: 0;
+  border-radius: 26px; font-size: 16px; background: linear-gradient(135deg,#ff9a56,#ff5e7e);
+  color: #fff; cursor: pointer;
+}
+.panel button.ghost { background: transparent; border: 1px solid #8b7aa0; color: #c9b8d8; }
