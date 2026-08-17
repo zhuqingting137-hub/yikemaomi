@@ -27,23 +27,31 @@
 
   var RETURN_MS = 3000;                    // 松手 3 秒后火腿肠消失
   var SPEED_FACTOR = 1.6;                  // 猫的奔跑速度系数（三条腿也很快）
+  var CAT_ASPECT = 1135 / 453;             // 猫素材高宽比（图片没加载完时的兜底值）
+  var SOFA_ASPECT = 315 / 406;             // 沙发素材高宽比（兜底值）
 
   function vw() { return window.innerWidth; }
   function vh() { return window.innerHeight; }
+
+  function naturalRatio(el, fallback) {
+    return (el.naturalWidth > 0 && el.naturalHeight > 0)
+      ? el.naturalHeight / el.naturalWidth
+      : fallback;
+  }
 
   // ============ 布局 ============
   function layout() {
     // 沙发：底部居中
     var sw = Math.min(vw() * 0.52, 340);
-    var sh = sw * (sofaEl.naturalHeight / sofaEl.naturalWidth);
+    var sh = sw * naturalRatio(sofaEl, SOFA_ASPECT);
     sofaEl.style.width = sw + 'px';
     sofaEl.style.left = ((vw() - sw) / 2) + 'px';
     sofaEl.style.bottom = (vh() * 0.05) + 'px';
 
     // 猫：站在沙发面上，居中偏右一点
     var catH = vh() * 0.42;
-    cat.w = catH * (catEl.naturalWidth / catEl.naturalHeight);
     cat.h = catH;
+    cat.w = catH / naturalRatio(catEl, CAT_ASPECT);
     catEl.style.width = cat.w + 'px';
     var sofaTop = vh() - vh() * 0.05 - sh;
     home.x = vw() / 2 + sw * 0.06;
@@ -169,12 +177,19 @@
   }
 
   // ============ 初始化 ============
+  function fixStageHeight() {
+    stage.style.height = window.innerHeight + 'px';
+  }
   stage.addEventListener('pointerdown', onDown);
   stage.addEventListener('pointermove', onMove);
   stage.addEventListener('pointerup', onUp);
   stage.addEventListener('pointercancel', onUp);
   stage.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
   window.addEventListener('resize', layout);
+  window.addEventListener('load', fixStageHeight);
+  window.addEventListener('resize', fixStageHeight);
+  catEl.addEventListener('load', layout);
+  sofaEl.addEventListener('load', layout);
 
   muteBtn.addEventListener('click', function (e) {
     e.stopPropagation();
@@ -185,6 +200,7 @@
   document.getElementById('back').addEventListener('pointerdown', function (e) { e.stopPropagation(); });
 
   layout();
+  fixStageHeight();
   cat.x = home.x;
   cat.y = home.y;
   raf = requestAnimationFrame(loop);

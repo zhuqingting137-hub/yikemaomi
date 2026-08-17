@@ -3,15 +3,15 @@
 
   // ========== 素材配置：三只猫，每只一个文件夹 ==========
   var CATS = [
-    { name: '猫一', img: 'assets/img/cat1.png',
+    { name: '猫一', img: 'assets/img/cat1.jpg',
       idle:  ['assets/video/cat1/idle1.mp4'],
       react: ['assets/video/cat1/react1.mp4'],
       sleep: 'assets/video/cat1/sleep.mp4' },
-    { name: '猫二', img: 'assets/img/cat2.png',
+    { name: '猫二', img: 'assets/img/cat2.jpg',
       idle:  ['assets/video/cat2/idle1.mp4'],
       react: ['assets/video/cat2/react1.mp4'],
       sleep: 'assets/video/cat2/sleep.mp4' },
-    { name: '猫三', img: 'assets/img/cat3.png',
+    { name: '猫三', img: 'assets/img/cat3.jpg',
       idle:  ['assets/video/cat3/idle1.mp4'],
       react: ['assets/video/cat3/react1.mp4'],
       sleep: 'assets/video/cat3/sleep.mp4' }
@@ -62,6 +62,8 @@
     $video.pause();
     $video.style.display = 'none';
     $placeholder.style.backgroundImage = "url('" + cat().img + "')";
+    var fb = $placeholder.querySelector('.fallback');
+    if (fb) fb.style.display = 'none';
     $placeholder.style.display = 'block';
   }
 
@@ -199,6 +201,12 @@
     $timer.textContent = fmt(TIMER_SECONDS);
     buildDots();
     $video.addEventListener('error', showPlaceholder);
+    function fixStageHeight() {
+      document.getElementById('stage').style.height = window.innerHeight + 'px';
+    }
+    window.addEventListener('load', fixStageHeight);
+    window.addEventListener('resize', fixStageHeight);
+    fixStageHeight();
     playIdle();
     document.getElementById('stage').addEventListener('pointerdown', onDown);
     document.getElementById('stage').addEventListener('pointerup', onUp);

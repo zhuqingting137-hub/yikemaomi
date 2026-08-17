@@ -15,7 +15,8 @@
       touch-action: none;
       user-select: none;
     }
-    #stage { position: relative; width: 100%; height: 100dvh; overflow: hidden; }
+    #stage { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+    @supports (height: 100dvh) { #stage { height: 100dvh; } }
 
     #sofa {
       position: absolute; z-index: 1;
@@ -65,10 +66,10 @@
 </head>
 <body>
   <div id="stage">
-    <img id="sofa" src="assets/img/sofa.png" alt="沙发">
-    <img id="cat" src="assets/img/cat1_sprite.png" alt="狸花猫">
+    <img id="sofa" src="assets/img/sofa.webp" alt="沙发">
+    <img id="cat" src="assets/img/cat1_sprite.webp" alt="狸花猫">
     <img id="sausage" src="assets/img/sausage.png" alt="火腿肠">
-    <div id="badge">猫1 · 断尾伤腿狸花猫（演示版）</div>
+    <div id="badge">猫1 · 断尾伤腿狸花猫（轻量版）</div>
     <button id="muteBtn">🔊</button>
     <a id="back" href="index.html">← 返回</a>
     <div id="hint">手指点哪里，火腿肠就出现在哪里，<br>猫会飞快跑过去～ 松手 3 秒后它回沙发</div>
