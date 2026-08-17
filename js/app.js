@@ -1,20 +1,16 @@
 (function () {
   'use strict';
 
-  // ========== 素材配置：三只猫，每只一个文件夹 ==========
+  // ========== 素材配置：两只猫，每只一个文件夹 ==========
   var CATS = [
-    { name: '猫一', img: 'assets/img/cat1.jpg',
+    { name: '蹩脚狸花猫', img: 'assets/img/cat1.jpg',
       idle:  ['assets/video/cat1/idle1.mp4'],
       react: ['assets/video/cat1/react1.mp4'],
       sleep: 'assets/video/cat1/sleep.mp4' },
-    { name: '猫二', img: 'assets/img/cat2.jpg',
+    { name: '埃及法老猫', img: 'assets/img/cat2.jpg',
       idle:  ['assets/video/cat2/idle1.mp4'],
       react: ['assets/video/cat2/react1.mp4'],
-      sleep: 'assets/video/cat2/sleep.mp4' },
-    { name: '猫三', img: 'assets/img/cat3.jpg',
-      idle:  ['assets/video/cat3/idle1.mp4'],
-      react: ['assets/video/cat3/react1.mp4'],
-      sleep: 'assets/video/cat3/sleep.mp4' }
+      sleep: 'assets/video/cat2/sleep.mp4' }
   ];
   var TIMER_SECONDS = 15 * 60; // 一刻钟
   var SWIPE_MIN = 50;          // 判定为滑动的横向距离
