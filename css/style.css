@@ -30,11 +30,6 @@ body {
   padding: 8px 18px; border-radius: 20px; background: rgba(0,0,0,.45);
   font-size: 14px; animation: hintPulse 2s ease-in-out infinite;
 }
-#demoLink {
-  position: absolute; right: 12px; bottom: calc(52px + env(safe-area-inset-bottom));
-  z-index: 6; color: #ffd28a; text-decoration: none; font-size: 12px;
-  background: rgba(0,0,0,.45); padding: 8px 12px; border-radius: 16px;
-}
 @keyframes hintPulse { 0%,100% { opacity: .9; } 50% { opacity: .45; } }
 
 #fxLayer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
