@@ -1,0 +1,28 @@
+<view class="page">
+  <canvas
+    type="2d"
+    id="game"
+    class="game"
+    bindtouchstart="onTouchStart"
+    bindtouchmove="onTouchMove"
+    bindtouchend="onTouchEnd"
+    bindtouchcancel="onTouchEnd"
+  ></canvas>
+
+  <view class="topbar">
+    <view class="timer">{{timeText}}</view>
+    <view class="catname">{{catName}}</view>
+  </view>
+
+  <view class="hint" wx:if="{{hint}}">{{hint}}</view>
+
+  <view class="end" wx:if="{{ended}}">
+    <view class="end-panel">
+      <view class="end-emoji">😿</view>
+      <view class="end-title">一刻结束啦</view>
+      <view class="end-desc">15 分钟互动时间结束</view>
+      <button class="btn ghost" bindtap="restart">再玩一次</button>
+      <button class="btn" bindtap="goRenew">续时（即将上线）</button>
+    </view>
+  </view>
+</view>

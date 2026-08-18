@@ -1,0 +1,6 @@
+<view class="end-page">
+  <view class="emoji">😿</view>
+  <view class="title">一刻结束啦</view>
+  <view class="desc">15 分钟互动时间结束，休息一下吧</view>
+  <button class="btn" bindtap="back">再玩一次</button>
+</view>

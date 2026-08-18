@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/end/end"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#1a1420",
+    "backgroundTextStyle": "light",
+    "disableScroll": true
+  },
+  "sitemapLocation": "sitemap.json"
+}

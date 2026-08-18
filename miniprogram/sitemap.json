@@ -1,0 +1,9 @@
+{
+  "desc": "一刻猫咪",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

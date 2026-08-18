@@ -1,0 +1,7 @@
+page {
+  background: #1a1420;
+  color: #fff;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+}
